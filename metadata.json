@@ -1,0 +1,5 @@
+{
+  "name": "File Stream Bot",
+  "description": "Upload files and get a shareable link to stream or download them instantly.",
+  "requestFramePermissions": []
+}
