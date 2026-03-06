@@ -1,5 +1,4 @@
 import express from 'express';
-import { createServer as createViteServer } from 'vite';
 import multer from 'multer';
 import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
@@ -7,8 +6,11 @@ import fs from 'fs';
 import { saveFileRecord, getFileRecord, deleteFileRecord, getAdminStats, getSetting, setSetting } from './server/database.js';
 import { setupBot, getTelegramFileInfo, streamTelegramFile, uploadFileToTelegram, telegramClient, binChannel } from './server/bot.js';
 
-const PORT = 3000;
-const UPLOADS_DIR = path.join(process.cwd(), 'uploads');
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+const isVercel = process.env.VERCEL === '1';
+const UPLOADS_DIR = isVercel 
+  ? path.join('/tmp', 'uploads') 
+  : path.join(process.cwd(), 'uploads');
 const adminTokens = new Set<string>();
 
 if (!fs.existsSync(UPLOADS_DIR)) {
@@ -285,6 +287,8 @@ async function startServer() {
 
   // Vite middleware for development
   if (process.env.NODE_ENV !== 'production') {
+    const viteModule = 'vite';
+    const { createServer: createViteServer } = await import(viteModule);
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
