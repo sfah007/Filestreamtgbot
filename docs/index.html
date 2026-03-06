@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamBox Documentation</title>
+    <meta name="description" content="StreamBox - Open source Telegram File Stream and Direct Download Link Generator Documentation." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #050505; color: #e5e5e5; }
+        .glass { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+        }
+        .glass-header {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col items-center p-4 md:p-8 font-sans selection:bg-indigo-500/30">
+    <div class="max-w-4xl w-full glass rounded-3xl overflow-hidden shadow-2xl my-8">
+        
+        <!-- Header -->
+        <div class="p-8 md:p-12 border-b border-white/10 glass-header relative overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-indigo-500 rounded-b-full opacity-50 blur-[2px]"></div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">Stream<span class="text-indigo-400">Box</span> Docs 🚀</h1>
+            <p class="text-zinc-400 text-lg md:text-xl font-light">Telegram File Stream & Direct Link Generator</p>
+            <p class="text-zinc-500 text-sm mt-2" dir="rtl">دليل الاستخدام الشامل لمشروع ستريم بوكس</p>
+        </div>
+
+        <!-- Content -->
+        <div class="p-8 md:p-12 space-y-16">
+            
+            <!-- Introduction -->
+            <section id="intro" class="space-y-4">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-3 flex items-center">
+                    <span class="bg-indigo-500/20 text-indigo-400 p-2 rounded-lg mr-3 text-sm">01</span>
+                    Introduction / مقدمة
+                </h2>
+                <p class="text-zinc-300 leading-relaxed">
+                    StreamBox is a powerful Telegram-based file streaming service. It uses Telegram's 2GB file limit to provide free, unlimited cloud storage for your files, generating direct stream and download links instantly.
+                </p>
+                <p dir="rtl" class="text-right text-zinc-400 leading-relaxed mt-4">
+                    ستريم بوكس هو خدمة قوية لبث الملفات تعتمد على تيليجرام. تستخدم حد الـ 2 جيجابايت الخاص بتيليجرام لتوفير مساحة تخزين سحابية مجانية وغير محدودة لملفاتك، مع إنشاء روابط بث وتحميل مباشرة فوراً.
+                </p>
+            </section>
+
+            <!-- Environment Variables -->
+            <section id="env" class="space-y-4">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-3 flex items-center">
+                    <span class="bg-indigo-500/20 text-indigo-400 p-2 rounded-lg mr-3 text-sm">02</span>
+                    Environment Variables / المتغيرات البيئية
+                </h2>
+                <p class="text-zinc-400 mb-4">To run StreamBox, you need the following credentials from Telegram:</p>
+                
+                <div class="overflow-x-auto bg-black/40 rounded-2xl border border-white/10">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-white/5 border-b border-white/10">
+                                <th class="p-4 text-white font-medium text-sm">Variable / المتغير</th>
+                                <th class="p-4 text-white font-medium text-sm">Description / الوصف</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="p-4 font-mono text-indigo-400">TELEGRAM_API_ID</td>
+                                <td class="p-4 text-zinc-300">Your API ID from my.telegram.org</td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="p-4 font-mono text-indigo-400">TELEGRAM_API_HASH</td>
+                                <td class="p-4 text-zinc-300">Your API Hash from my.telegram.org</td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="p-4 font-mono text-indigo-400">TELEGRAM_BOT_TOKEN</td>
+                                <td class="p-4 text-zinc-300">Bot token from @BotFather</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="p-4 font-mono text-indigo-400">BIN_CHANNEL_ID</td>
+                                <td class="p-4 text-zinc-300">Storage channel ID (e.g., -1001234567890). Bot must be admin.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Docker Deployment -->
+            <section id="docker" class="space-y-4">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-3 flex items-center">
+                    <span class="bg-indigo-500/20 text-indigo-400 p-2 rounded-lg mr-3 text-sm">03</span>
+                    Docker Deployment / النشر عبر دوكر
+                </h2>
+                <p class="text-zinc-300">StreamBox includes a <code>Dockerfile</code> and <code>docker-compose.yml</code> for easy containerized deployment.</p>
+                
+                <pre class="bg-black/60 p-6 rounded-2xl border border-white/10 font-mono text-sm overflow-x-auto text-zinc-300 shadow-inner mt-4">
+<span class="text-zinc-500"># 1. Clone the repository</span>
+git clone https://github.com/yourusername/streambox.git
+cd streambox
+
+<span class="text-zinc-500"># 2. Create .env file with your variables</span>
+nano .env
+
+<span class="text-zinc-500"># 3. Start the container</span>
+docker-compose up -d</pre>
+            </section>
+
+            <!-- Heroku Deployment -->
+            <section id="heroku" class="space-y-4">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-3 flex items-center">
+                    <span class="bg-indigo-500/20 text-indigo-400 p-2 rounded-lg mr-3 text-sm">04</span>
+                    Heroku Deployment / النشر عبر هيروكو
+                </h2>
+                <p class="text-zinc-300 mb-4">You can deploy StreamBox to Heroku with a single click or via the Heroku CLI.</p>
+                
+                <a href="https://heroku.com/deploy" target="_blank" rel="noopener noreferrer" class="inline-block mb-6 hover:opacity-80 transition-opacity">
+                    <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku" />
+                </a>
+                
+                <pre class="bg-black/60 p-6 rounded-2xl border border-white/10 font-mono text-sm overflow-x-auto text-zinc-300 shadow-inner">
+<span class="text-zinc-500"># Login to Heroku</span>
+heroku login
+
+<span class="text-zinc-500"># Create a new app</span>
+heroku create my-streambox-app
+
+<span class="text-zinc-500"># Push code to Heroku</span>
+git push heroku main
+
+<span class="text-zinc-500"># Set environment variables</span>
+heroku config:set TELEGRAM_API_ID=your_id TELEGRAM_API_HASH=your_hash TELEGRAM_BOT_TOKEN=your_token BIN_CHANNEL_ID=your_channel</pre>
+            </section>
+
+            <!-- Render & Railway -->
+            <section id="render" class="space-y-4">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-3 flex items-center">
+                    <span class="bg-indigo-500/20 text-indigo-400 p-2 rounded-lg mr-3 text-sm">05</span>
+                    Render & Railway / منصات أخرى
+                </h2>
+                <p class="text-zinc-300">StreamBox is pre-configured for modern PaaS providers. Configuration files (<code>render.yaml</code> and <code>railway.json</code>) are included in the repository.</p>
+                <ul class="list-disc pl-6 space-y-2 text-zinc-400 mt-4">
+                    <li><strong>Render:</strong> Connect your GitHub repo. Render will automatically detect the <code>render.yaml</code> file.</li>
+                    <li><strong>Railway:</strong> Create a new project from GitHub. Railway uses the <code>railway.json</code> configuration automatically.</li>
+                </ul>
+            </section>
+
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-6 border-t border-white/10 text-center text-zinc-500 text-sm">
+            <p>StreamBox &copy; 2024. Open Source under MIT License.</p>
+        </div>
+    </div>
+</body>
+</html>

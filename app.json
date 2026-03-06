@@ -1,0 +1,30 @@
+{
+  "name": "StreamBox",
+  "description": "Telegram File Stream & Direct Link Generator. Upload up to 2GB files securely.",
+  "repository": "https://github.com/yourusername/streambox",
+  "logo": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/play.svg",
+  "keywords": ["telegram", "stream", "bot", "file", "cloud", "react", "express"],
+  "env": {
+    "TELEGRAM_API_ID": {
+      "description": "Your Telegram API ID from my.telegram.org",
+      "required": true
+    },
+    "TELEGRAM_API_HASH": {
+      "description": "Your Telegram API Hash from my.telegram.org",
+      "required": true
+    },
+    "TELEGRAM_BOT_TOKEN": {
+      "description": "Your Telegram Bot Token from @BotFather",
+      "required": true
+    },
+    "BIN_CHANNEL_ID": {
+      "description": "The ID of the Telegram channel where files will be stored (e.g., -1001234567890). The bot must be an admin in this channel.",
+      "required": true
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

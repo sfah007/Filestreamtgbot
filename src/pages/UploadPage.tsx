@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Upload, File, Link as LinkIcon, CheckCircle, AlertCircle, Sparkles, Settings } from 'lucide-react';
+import { Upload, File, Link as LinkIcon, CheckCircle, AlertCircle, Sparkles, Settings, Book } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export function UploadPage() {
@@ -96,13 +96,23 @@ export function UploadPage() {
     <div className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
       <div className="atmosphere-bg"></div>
       
-      <button 
-        onClick={() => navigate('/admin')}
-        className="absolute top-6 right-6 p-3 glass-button text-zinc-400 hover:text-white rounded-xl z-20"
-        title="Admin Dashboard"
-      >
-        <Settings className="w-5 h-5" />
-      </button>
+      <div className="absolute top-6 right-6 flex space-x-3 z-20">
+        <button 
+          onClick={() => navigate('/docs')}
+          className="p-3 glass-button text-zinc-400 hover:text-white rounded-xl flex items-center"
+          title="Documentation"
+        >
+          <Book className="w-5 h-5" />
+          <span className="ml-2 text-sm font-medium hidden sm:block">Docs / الشرح</span>
+        </button>
+        <button 
+          onClick={() => navigate('/admin')}
+          className="p-3 glass-button text-zinc-400 hover:text-white rounded-xl"
+          title="Admin Dashboard"
+        >
+          <Settings className="w-5 h-5" />
+        </button>
+      </div>
 
       <motion.div 
         initial={{ opacity: 0, y: 30 }}

@@ -29,6 +29,26 @@
 
 You can deploy StreamBox on almost any modern cloud platform. Below are the guides for the most popular ones.
 
+### 🐳 Docker Deployment
+StreamBox comes with a ready-to-use `Dockerfile` and `docker-compose.yml`.
+1. Clone the repository.
+2. Create a `.env` file with your variables.
+3. Run `docker-compose up -d`.
+4. The app will be available at `http://localhost:3000`.
+
+### 💜 Heroku Deployment
+You can deploy to Heroku with a single click:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+**Or via Heroku CLI:**
+```bash
+heroku login
+heroku create my-streambox-app
+git push heroku main
+heroku config:set TELEGRAM_API_ID=your_id TELEGRAM_API_HASH=your_hash TELEGRAM_BOT_TOKEN=your_token BIN_CHANNEL_ID=your_channel
+```
+
 ### 1. Render (Recommended)
 Render is perfect for this project because it supports full Node.js environments and persistent disks (for SQLite).
 1. Fork this repository.

@@ -29,6 +29,26 @@
 
 يمكنك رفع المشروع على أشهر منصات الاستضافة السحابية بسهولة، حيث تم تجهيز ملفات الإعداد مسبقاً.
 
+### 🐳 النشر عبر دوكر (Docker)
+يحتوي المشروع على ملفات `Dockerfile` و `docker-compose.yml` جاهزة.
+1. انسخ المستودع.
+2. أنشئ ملف `.env` وضع فيه متغيراتك.
+3. قم بتشغيل الأمر `docker-compose up -d`.
+4. سيكون الموقع متاحاً على `http://localhost:3000`.
+
+### 💜 النشر عبر هيروكو (Heroku)
+يمكنك نشر المشروع على هيروكو بضغطة زر:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+**أو عبر سطر الأوامر (Heroku CLI):**
+```bash
+heroku login
+heroku create my-streambox-app
+git push heroku main
+heroku config:set TELEGRAM_API_ID=your_id TELEGRAM_API_HASH=your_hash TELEGRAM_BOT_TOKEN=your_token BIN_CHANNEL_ID=your_channel
+```
+
 ### 1. منصة Render (موصى بها بشدة)
 تعتبر Render الخيار الأفضل لأنها تدعم بيئة Node.js كاملة وتسمح بحفظ قواعد بيانات SQLite.
 1. قم بعمل Fork لهذا المستودع.
